@@ -1,9 +1,22 @@
 class FormulaCalculator {
     constructor() {
         this.formulaElements = document.querySelectorAll('formula');
+        this.isScrolling = false;
         this.init();
+        this.addScrollListener();    
     }
     
+    addScrollListener() {
+        let scrollTimer;
+        window.addEventListener('scroll', () => {
+            this.isScrolling = true;
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(() => {
+                this.isScrolling = false;
+            }, 100);
+        });
+    }
+
     init() {
         document.querySelectorAll('input[type="number"], select').forEach(input => {
             input.addEventListener('input', () => {
@@ -76,6 +89,8 @@ class FormulaCalculator {
     }
     
     calculateAll() {
+        if (this.isScrolling) return;
+        
         this.formulaElements.forEach(formula => {
             this.calculateFormula(formula);
         });
