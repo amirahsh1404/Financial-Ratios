@@ -8,7 +8,6 @@ class FormulaCalculator {
         document.querySelectorAll('input[type="number"], select').forEach(input => {
             input.addEventListener('input', () => {
                 let sign = this.validateInput(input);
-                console.log(sign)
                 if (sign == 1) {
                     this.calculateAll();
                 }
