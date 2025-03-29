@@ -1,20 +1,7 @@
 class FormulaCalculator {
     constructor() {
         this.formulaElements = document.querySelectorAll('formula');
-        this.isScrolling = false;
         this.init();
-        this.addScrollListener();    
-    }
-    
-    addScrollListener() {
-        let scrollTimer;
-        window.addEventListener('scroll', () => {
-            this.isScrolling = true;
-            clearTimeout(scrollTimer);
-            scrollTimer = setTimeout(() => {
-                this.isScrolling = false;
-            }, 100);
-        });
     }
 
     init() {
